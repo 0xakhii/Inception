@@ -38,6 +38,8 @@ Docker Volume is a mechanism to have a Docker managed file share between your co
 Docker Networking allows you to specify virtual Docker networks. Network traffic from and to containers is routed through a Docker proxy, This allows different setups for networking between individual containers.
 Docker Compose is a feature to build and run several different containers from a single docker-compose.yml file, You can specify the exact images for the docker containers, the container names, networks, volumes and much more.
 
+# `Docker Commands` :
+
 `Basic Command Line For Docker`:
 - docker ps or docker container ls -> `Show Cntrs Details`.
 - docker build "The Path Of A Docker File Do You Want To Build Image With It" -> `build image`.
@@ -58,6 +60,8 @@ Docker Compose is a feature to build and run several different containers from a
 - docker run -p -> `publish a container's port to the host`.
 - docker run -P -> `publish all exposed port to random ports`.
 - docker run -it "Image Name" -> `the program will continue to run and we will be able to interact with the container`.
+
+# `DockerFile` :
 
 `DockerFile Creation`:
 - the docker file name should be like `Dockerfile` or `dockerfile`.
