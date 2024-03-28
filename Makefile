@@ -1,0 +1,1 @@
+UP: docker run -dp <port:mapping> <container name>
