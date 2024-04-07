@@ -2,6 +2,8 @@ FROM debian:12
 
 RUN apt update -y && apt upgrade -y
 
+WORKDIR /var/www/html/
+
 RUN apt install wget -y
 
 RUN apt-get install -y php \
