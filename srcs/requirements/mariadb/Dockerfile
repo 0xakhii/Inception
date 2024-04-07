@@ -8,6 +8,8 @@ COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
 
 COPY ./conf/create_db.sh /
 
+RUN chmod +x /create_db.sh
+
 ENTRYPOINT [ "bash", "create_db.sh" ]
 
-EXPOSE 3306
+CMD [ "mysqld" ]

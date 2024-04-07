@@ -4,18 +4,9 @@ RUN apt update -y && apt upgrade -y
 
 RUN apt install wget -y
 
-RUN apt-get install -y php8.2 \
+RUN apt-get install -y php \
 	php-fpm \
-	php-mysql \
-	mariadb-client
-
-RUN wget https://wordpress.org/latest.zip -P /var/www
-
-RUN apt install unzip -y
-
-RUN cd /var/www && unzip latest.zip && rm -rf latest.zip
-
-RUN chown -R root:root /var/www/wordpress
+	php-mysql
 
 COPY conf/www.conf /etc/php/8.2/fpm/pool.d/www.conf
 
@@ -23,8 +14,10 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 RUN chmod +x wp-cli.phar
 
-RUN mv wp-cli.phar /usr/local/bin/wp
+RUN mv wp-cli.phar /bin/
 
 COPY conf/auto_conf.sh /home/
+
+RUN chmod +x /home/auto_conf.sh
 
 ENTRYPOINT [ "bash", "/home/auto_conf.sh" ]
