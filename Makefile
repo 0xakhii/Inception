@@ -1,1 +1,4 @@
-UP: docker run -dp <port:mapping> <container name>
+all : 
+	sudo docker-compose -f srcs/docker-compose.yml up
+down : 
+	sudo docker-compose -f srcs/docker-compose.yml down
