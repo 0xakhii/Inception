@@ -12,14 +12,14 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/akhi/data/mariadb
+      device: /home/kali/data/mariadb
   wordpress:
     driver: local
     name: wordpress
     driver_opts:
       type: none
       o: bind
-      device: /home/akhi/data/wordpress
+      device: /home/kali/data/wordpress
 
 services:
   nginx:
