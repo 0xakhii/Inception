@@ -22,4 +22,4 @@ COPY conf/auto_conf.sh /home/
 
 RUN chmod +x /home/auto_conf.sh
 
-ENTRYPOINT [ "bash", "/home/auto_conf.sh" ]
+CMD [ "bash", "/home/auto_conf.sh" ]
