@@ -10,4 +10,6 @@ COPY ./conf/create_db.sh /
 
 RUN chmod +x /create_db.sh
 
-# ENTRYPOINT [ "bash", "create_db.sh" ]
+EXPOSE 3306
+
+ENTRYPOINT [ "bash", "create_db.sh" ]
