@@ -9,7 +9,7 @@ RUN apt install openssl -y
 RUN mkdir -p /etc/nginx/ssl/
 
 RUN openssl req -x509 -nodes -out /etc/nginx/ssl/self.crt -keyout \
-	/etc/nginx/ssl/self.key -subj "/C=MO/L=BG/O=1377/CN=ojamal.42.fr/UID=ojamal"
+	/etc/nginx/ssl/self.key -subj "/C=MO/L=BG/O=1337/CN=ojamal.42.fr/UID=ojamal/OU=Bengruire"
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
