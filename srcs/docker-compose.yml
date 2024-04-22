@@ -38,6 +38,20 @@ services:
       - ./.env
     restart: always
 
+  redis:
+    container_name: redis
+    image: redis
+    build: requirements/bonus/redis
+    ports:
+      - "6379:6379"
+    networks:
+      - net
+    env_file:
+      - ./.env
+    depends_on:
+      - wordpress
+    restart: always
+
   wordpress:
     container_name: wordpress
     image: wordpress
@@ -46,6 +60,22 @@ services:
       - mariadb
     volumes:
       - wordpress:/var/www/html
+    networks:
+      - net
+    env_file:
+      - ./.env
+    restart: always
+
+  vsftpd:
+    container_name: vsftpd
+    image: vsftpd
+    build: requirements/bonus/vsftpd
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress:/var/www/html
+    ports:
+      - "21:21"
     networks:
       - net
     env_file:
