@@ -1,6 +1,7 @@
 #!/bin/bash
-
-adduser -h /var/www/html/ -s /bin/false -D $FTP_USER;
-echo "$FTP_USER:$FTP_PASSWD" | /usr/sbin/chpasswd;
-adduser $FTP_USER root;
-vsftpd /etc/vsftpd/vsftpd.conf
+useradd -m -p $FTP_PASSWD $FTP_USER
+echo "$FTP_USER:$FTP_PASSWD" | chpasswd
+usermod -aG $FTP_GROUP $FTP_USER
+echo $FTP_USER > /etc/vsftpd.userlist
+mkdir -p /var/run/vsftpd/empty
+vsftpd /etc/vsftpd.conf

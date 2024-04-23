@@ -11,4 +11,12 @@ COPY conf/vsftpd.conf /etc/vsftpd.conf
 
 COPY conf/user_create.sh /
 
+RUN mkdir -p /var/run/vsftpd/empty
+
+RUN chown root:root /var/run/vsftpd/empty
+
+RUN chmod 555 /var/run/vsftpd/empty
+
+EXPOSE 21 20
+
 CMD [ "/bin/bash", "/user_create.sh" ]
