@@ -95,3 +95,13 @@ services:
     env_file:
       - ./.env
     restart: always
+
+  website:
+    container_name: website
+    image: website
+    build: requirements/bonus/website
+    ports:
+      - "8080:80"
+    networks:
+      - inception
+    restart: always
