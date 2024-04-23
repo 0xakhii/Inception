@@ -9,4 +9,7 @@ chmod -R 777 /var/www/html/wp-content/plugins
 chmod -R 777 /var/www/html/wp-content/themes
 chmod -R 777 /var/www/html/wp-content/uploads
 wp-cli.phar plugin install redis-cache --activate --allow-root
+wp-cli.phar config set WP_CACHE true --raw --type=constant --allow-root
+wp-cli.phar	config set WP_REDIS_HOST redis --allow-root
+wp-cli.phar redis enable --allow-root
 php-fpm8.2 -F -R 
