@@ -2,16 +2,12 @@ FROM debian:12
 
 RUN apt update -y && apt upgrade -y
 
-RUN apt install nginx -y
+RUN apt install php -y
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+RUN mkdir -p /php_server
 
-COPY conf/src/* var/www/html/
+WORKDIR /php_server
 
-RUN chmod -R 777 /var/www/html
+COPY ./conf/ /php_server/
 
-RUN chown -R www-data:www-data /var/www/html
-
-EXPOSE 80
-
-CMD [ "nginx", "-g", "daemon off;" ]
+CMD [ "php", "-S", "0.0.0.0:80" ]

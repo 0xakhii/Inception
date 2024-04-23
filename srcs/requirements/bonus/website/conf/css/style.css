@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Ubuntu:ital,wght@1,300&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    
+}
+body{
+    background-image: linear-gradient(135deg, #29323c 10%, #485563 100%);
+    background-repeat: repeat-y;
+    font-family: 'Koulen', cursive;
+}
+.container{
+    width: 100%;
+    height: 50px;
+}
+header{
+    background-image: linear-gradient(135deg, #434343 10%, #000000 100%);
+    width: 70%;
+    font-size: 30px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+header > span{
+    text-decoration: underline 5px rgb(223, 219, 219);
+    opacity: 0.6;
+    letter-spacing: 2px;
+    font-weight: bolder;
+}
+ul li a{
+    color: rgb(245, 226, 226);
+    text-decoration: none;
+}
+ul li a:hover{
+    color: rgb(255, 255, 255);
+    text-decoration: underline 5px white;
+}
+
+ul li{
+    list-style: none;
+    display: inline-block;
+}
+ul{
+   position: absolute;
+   left: 650px;
+   top: -1px;
+   word-spacing: 30px;
+}
+.loading{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	margin: 50px auto;
+}
+.loading div{
+	width: 30px;
+	height: 30px;
+	background-color: orchid;
+	border-radius: 50%;
+	margin: 100px 5px;
+	animation-name: loading ;
+	animation-duration: .9s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+}
+.loading .two{
+	animation-delay: .3s;
+}
+.loading .three{
+	animation-delay: .6s;
+}
+@keyframes loading {
+	from{
+		opacity: 1;
+	}
+	to{
+		opacity: .2;
+		transform: translateY(-15px);
+	}
+	
+}
