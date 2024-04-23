@@ -8,5 +8,5 @@ chmod -R 777 /var/www/html/wp-content/
 chmod -R 777 /var/www/html/wp-content/plugins
 chmod -R 777 /var/www/html/wp-content/themes
 chmod -R 777 /var/www/html/wp-content/uploads
-wp-cli.phar plugin install wp-redis --activate --allow-root
+wp-cli.phar plugin install redis-cache --activate --allow-root
 php-fpm8.2 -F -R 
