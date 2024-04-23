@@ -1,8 +1,8 @@
 version: "3.8"
 
 networks:
-  net:
-    name: net
+  inception:
+    name: inception
     driver: bridge
 
 volumes:
@@ -33,7 +33,7 @@ services:
     volumes:
       - wordpress:/var/www/html
     networks:
-      - net
+      - inception
     env_file:
       - ./.env
     restart: always
@@ -47,7 +47,7 @@ services:
     volumes:
       - wordpress:/var/www/html
     networks:
-      - net
+      - inception
     env_file:
       - ./.env
     restart: always
@@ -59,7 +59,7 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     networks:
-      - net
+      - inception
     env_file:
       - ./.env
     restart: always
@@ -77,7 +77,7 @@ services:
       - "20:20"
       - "40000-40010:40000-40010"
     networks:
-      - net
+      - inception
     env_file:
       - ./.env
     restart: always
@@ -89,9 +89,9 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - net
-    env_file:
-      - ./.env
+      - inception
     depends_on:
       - wordpress
+    env_file:
+      - ./.env
     restart: always
