@@ -10,4 +10,4 @@ WORKDIR /var/www/
 RUN wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php && \
 	mv adminer-4.8.1.php index.php
 
-CMD [ "php" , "-S" , "[::]:7070" , "-t" , "/var/www/" ]
+CMD [ "php" , "-S" , "[::]:7070" ]

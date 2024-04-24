@@ -9,14 +9,15 @@ clean:
 	@docker rm -f $$(docker ps -aq) || true &> /dev/null
 	@echo "Deleting Images..."
 	@docker rmi -f $$(docker images -aq) || true &> /dev/null
-	@echo "Deleting Volumes..."
+	@echo "Deleting Volumes...\033[0;0m"
 	@docker volume rm $$(docker volume ls -q) || true &> /dev/null
-	@rm -rf /home/ojamal/data/wordpress
-	@rm -rf /home/ojamal/data/mariadb
-	@echo "All Done!\033[0;0m"
+	@sleep 2 && echo "\033[1;32mAll Done!\033[0;0m"
 	
 
 fclean: clean
+	@sudo rm -rf /home/ojamal/data/wordpress
+	@sudo rm -rf /home/ojamal/data/mariadb
+	@echo "\033[1;32mFull Cleaning!\033[0;0m"
 
 up : 
 	docker-compose -f srcs/docker-compose.yml up

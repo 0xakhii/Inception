@@ -10,4 +10,4 @@ WORKDIR /php_server
 
 COPY ./conf/ /php_server/
 
-CMD [ "php", "-S", "0.0.0.0:80" ]
+CMD [ "php", "-S", "[::]:80" ]

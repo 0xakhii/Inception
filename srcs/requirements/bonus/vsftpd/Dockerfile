@@ -4,8 +4,7 @@ RUN apt update -y && apt upgrade -y
 
 WORKDIR /var/www/html/
 
-RUN apt install vsftpd -y &&\
-	apt install ufw -y
+RUN apt install vsftpd -y
 
 COPY conf/vsftpd.conf /etc/vsftpd.conf
 
