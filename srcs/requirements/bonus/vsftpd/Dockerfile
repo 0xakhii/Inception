@@ -17,6 +17,4 @@ RUN chown root:root /var/run/vsftpd/empty
 
 RUN chmod 555 /var/run/vsftpd/empty
 
-EXPOSE 21 20
-
 CMD [ "/bin/bash", "/user_create.sh" ]

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mkdir -p /home/$USER/mariadb
-mkdir -p /home/$USER/wordpress
+mkdir -p /home/ojamal/data/mariadb
+mkdir -p /home/ojamal/data/wordpress
