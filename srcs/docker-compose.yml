@@ -117,3 +117,18 @@ services:
     networks:
       - inception
     restart: always
+  
+  cadvisor:
+    container_name: cadvisor
+    image: cadvisor
+    build: requirements/bonus/cadvisor
+    ports:
+      - "9090:9090"
+    networks:
+      - inception
+    volumes:
+      - "/:/rootfs:ro"
+      - "/var/run:/var/run:rw"
+      - "/sys:/sys:ro"
+      - "/var/lib/docker/:/var/lib/docker:ro"
+    restart: always
