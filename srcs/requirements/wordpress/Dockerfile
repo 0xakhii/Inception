@@ -6,6 +6,7 @@ WORKDIR /var/www/html/
 
 RUN apt install wget -y
 
+
 RUN apt-get install -y php \
 	php-fpm \
 	php-mysql
