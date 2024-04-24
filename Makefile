@@ -3,12 +3,17 @@ all :
 	docker-compose -f srcs/docker-compose.yml build && docker-compose -f srcs/docker-compose.yml up
 
 clean:
-	docker stop $$(docker ps -aq)
-	docker rm -f $$(docker ps -aq)
-	docker rmi -f $$(docker images -aq)
-	docker volume rm $$(docker volume ls -q)
-	rm -rf /home/$(USER)/data/wordpress
-	rm -rf /home/$(USER)/data/mariadb
+	@echo "\033[1;32mStoping Containers..."
+	@docker stop $$(docker ps -aq) || true &> /dev/null
+	@echo "Deleting Containers..."
+	@docker rm -f $$(docker ps -aq) || true &> /dev/null
+	@echo "Deleting Images..."
+	@docker rmi -f $$(docker images -aq) || true &> /dev/null
+	@echo "Deleting Volumes..."
+	@docker volume rm $$(docker volume ls -q) || true &> /dev/null
+	@rm -rf /home/ojamal/data/wordpress
+	@rm -rf /home/ojamal/data/mariadb
+	@echo "All Done!\033[0;0m"
 	
 
 fclean: clean
