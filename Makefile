@@ -1,7 +1,7 @@
 all : 
 	mkdir -p /home/kali/data/mariadb
 	mkdir -p /home/kali/data/wordpress
-	docker-compose -f srcs/docker-compose.yml build && docker-compose -f srcs/docker-compose.yml up
+	docker-compose -f srcs/docker-compose.yml up --build
 
 clean:
 	@echo "\033[1;32mStoping Containers..."
