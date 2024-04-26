@@ -2,19 +2,12 @@ FROM debian:11
 
 RUN apt update -y && apt upgrade -y
 
-RUN apt install nginx -y
+RUN	apt install nginx gettext openssl -y && \
+	mkdir -p /etc/nginx/ssl/ && \
+	chmod 755 /var/www/html &&chown -R www-data:www-data /var/www/html
 
-RUN apt install openssl -y
+COPY conf/nginx.conf /
 
-RUN mkdir -p /etc/nginx/ssl/
-
-RUN openssl req -x509 -nodes -out /etc/nginx/ssl/self.crt -keyout \
-	/etc/nginx/ssl/self.key -subj "/C=MO/L=BG/O=1337/CN=ojamal.42.fr/UID=ojamal/OU=Bengruire"
-
-COPY conf/nginx.conf /etc/nginx/nginx.conf
-
-RUN chmod 755 /var/www/html
-
-RUN chown -R www-data:www-data /var/www/html
-
-CMD [ "nginx", "-g", "daemon off;" ]
+CMD bash -c 'envsubst < /nginx.conf > /etc/nginx/conf.d/nginx.conf && \
+	openssl req -x509 -nodes -out ${CERT} -keyout \
+	${KEY} -subj "/" && nginx -g "daemon off;"'
