@@ -1,8 +1,7 @@
 FROM debian:11
 
-RUN apt update -y && apt upgrade -y
-
-RUN	apt install nginx gettext openssl -y && \
+RUN apt update -y && apt upgrade -y && \
+	apt install nginx gettext openssl -y && \
 	mkdir -p /etc/nginx/ssl/ && \
 	chmod 755 /var/www/html &&chown -R www-data:www-data /var/www/html
 

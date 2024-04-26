@@ -2,9 +2,8 @@ FROM debian:11
 
 WORKDIR /var/www/html/
 
-RUN apt update -y && apt upgrade -y
-
-RUN	apt install vsftpd -y && \
+RUN apt update -y && apt upgrade -y && \
+	apt install vsftpd -y && \
 	mkdir -p /var/run/vsftpd/empty && \
 	chown root:root /var/run/vsftpd/empty && \
 	chmod 555 /var/run/vsftpd/empty
