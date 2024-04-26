@@ -12,4 +12,4 @@ chown -R www-data:www-data /var/www/html/
 wp-cli.phar config set WP_CACHE true --raw --type=constant --allow-root
 wp-cli.phar	config set WP_REDIS_HOST redis --allow-root
 wp-cli.phar redis enable --allow-root
-php-fpm8.2 -F -R 
+php-fpm7.4 -F -R 
