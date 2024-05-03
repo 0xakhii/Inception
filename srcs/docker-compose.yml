@@ -37,7 +37,7 @@ services:
     env_file:
       - ./.env
     restart: always
-    init: true
+    init : true
 
   wordpress:
     container_name: wordpress
@@ -52,7 +52,7 @@ services:
     env_file:
       - ./.env
     restart: always
-    init: true
+    init : true
 
   mariadb:
     container_name: mariadb
@@ -65,7 +65,7 @@ services:
     env_file:
       - ./.env
     restart: always
-    init: true
+    init : true
 
   vsftpd:
     container_name: vsftpd
@@ -84,7 +84,7 @@ services:
     env_file:
       - ./.env
     restart: always
-    init: true
+    init : true
 
   redis:
     container_name: redis
@@ -99,7 +99,7 @@ services:
     env_file:
       - ./.env
     restart: always
-    init: true
+    init : true
 
   website:
     container_name: website
@@ -110,7 +110,8 @@ services:
     networks:
       - inception
     restart: always
-    init: true
+    init : true
+
 
   adminer:
     container_name: adminer
@@ -123,7 +124,7 @@ services:
     networks:
       - inception
     restart: always
-    init: true
+    init : true
   
   cadvisor:
     container_name: cadvisor
@@ -139,4 +140,4 @@ services:
       - "/sys:/sys:ro"
       - "/var/lib/docker/:/var/lib/docker:ro"
     restart: always
-    init: true
+    init : true
