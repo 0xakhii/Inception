@@ -1,6 +1,6 @@
 all : 
-	mkdir -p /home/kali/data/mariadb
-	mkdir -p /home/kali/data/wordpress
+	mkdir -p ~/data/mariadb
+	mkdir -p ~/data/wordpress
 	docker-compose -f srcs/docker-compose.yml up -d --build
 
 build :
@@ -16,8 +16,8 @@ clean:
 	@docker rm -f $$(docker ps -aq) || true 2> /dev/null
 
 fclean: clean
-	@sudo rm -rf /home/kali/data/wordpress
-	@sudo rm -rf /home/kali/data/mariadb
+	@sudo rm -rf ~/data/wordpress
+	@sudo rm -rf ~/data/mariadb
 	@echo "Deleting Images..."
 	@docker rmi -f $$(docker images -aq) || true 2> /dev/null
 	@echo "Deleting Volumes...\033[0;0m"
