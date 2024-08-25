@@ -29,7 +29,7 @@ To run Inception, you need the following software installed on your system:
 1. Clone the repository:
 
     ```
-    git clone https://github.com/yourusername/inception.git
+    git clone https://github.com/0xakhii/inception.git
     cd inception
     ```
 
