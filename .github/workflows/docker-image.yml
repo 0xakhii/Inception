@@ -25,7 +25,7 @@ services:
   nginx:
     container_name: nginx
     image: nginx
-    build: srcs/requirements/nginx
+    build: ../../srcs/requirements/nginx
     depends_on:
       - wordpress
     ports:
@@ -42,7 +42,7 @@ services:
   wordpress:
     container_name: wordpress
     image: wordpress
-    build: srcs/requirements/wordpress
+    build: ../../srcs/requirements/wordpress
     depends_on:
       - mariadb
     volumes:
@@ -57,7 +57,7 @@ services:
   mariadb:
     container_name: mariadb
     image: mariadb
-    build: srcs/requirements/mariadb
+    build: ../../srcs/requirements/mariadb
     volumes:
       - mariadb:/var/lib/mysql
     networks:
@@ -70,7 +70,7 @@ services:
   vsftpd:
     container_name: vsftpd
     image: vsftpd
-    build: srcs/requirements/bonus/vsftpd
+    build: ../../srcs/requirements/bonus/vsftpd
     depends_on:
       - wordpress
     volumes:
@@ -89,7 +89,7 @@ services:
   redis:
     container_name: redis
     image: redis
-    build: srcs/requirements/bonus/redis
+    build: ../../srcs/requirements/bonus/redis
     ports:
       - "6379:6379"
     networks:
@@ -104,7 +104,7 @@ services:
   website:
     container_name: website
     image: website
-    build: srcs/requirements/bonus/website
+    build: ../../srcs/requirements/bonus/website
     ports:
       - "8080:80"
     networks:
@@ -116,7 +116,7 @@ services:
   adminer:
     container_name: adminer
     image: adminer
-    build: srcs/requirements/bonus/adminer
+    build: ../../srcs/requirements/bonus/adminer
     ports:
       - "7070:7070"
     depends_on:
@@ -129,7 +129,7 @@ services:
   cadvisor:
     container_name: cadvisor
     image: cadvisor
-    build: srcs/requirements/bonus/cadvisor
+    build: ../../srcs/requirements/bonus/cadvisor
     ports:
       - "9090:9090"
     networks:
