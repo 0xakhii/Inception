@@ -1,0 +1,143 @@
+version: "3.8"
+
+networks:
+  inception:
+    name: inception
+    driver: bridge
+
+volumes:
+  mariadb:
+    driver: local
+    name: mariadb
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/data/mariadb
+  wordpress:
+    driver: local
+    name: wordpress
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/data/wordpress
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    build: srcs/requirements/nginx
+    depends_on:
+      - wordpress
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - inception
+    env_file:
+      - ./.env
+    restart: always
+    init : true
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    build: srcs/requirements/wordpress
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - inception
+    env_file:
+      - ./.env
+    restart: always
+    init : true
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    build: srcs/requirements/mariadb
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - inception
+    env_file:
+      - ./.env
+    restart: always
+    init : true
+
+  vsftpd:
+    container_name: vsftpd
+    image: vsftpd
+    build: srcs/requirements/bonus/vsftpd
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress:/var/www/html
+    ports:
+      - "21:21"
+      - "20:20"
+      - "40000-40010:40000-40010"
+    networks:
+      - inception
+    env_file:
+      - ./.env
+    restart: always
+    init : true
+
+  redis:
+    container_name: redis
+    image: redis
+    build: srcs/requirements/bonus/redis
+    ports:
+      - "6379:6379"
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    env_file:
+      - ./.env
+    restart: always
+    init : true
+
+  website:
+    container_name: website
+    image: website
+    build: srcs/requirements/bonus/website
+    ports:
+      - "8080:80"
+    networks:
+      - inception
+    restart: always
+    init : true
+
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    build: srcs/requirements/bonus/adminer
+    ports:
+      - "7070:7070"
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    restart: always
+    init : true
+  
+  cadvisor:
+    container_name: cadvisor
+    image: cadvisor
+    build: srcs/requirements/bonus/cadvisor
+    ports:
+      - "9090:9090"
+    networks:
+      - inception
+    volumes:
+      - "/:/rootfs:ro"
+      - "/var/run:/var/run:rw"
+      - "/sys:/sys:ro"
+      - "/var/lib/docker/:/var/lib/docker:ro"
+    restart: always
+    init : true
